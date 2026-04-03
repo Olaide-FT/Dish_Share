@@ -9,7 +9,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
     <script>
         tailwind.config = {
@@ -40,7 +41,7 @@
     </script>
 </head>
 
-<body class="bg-cream text-ink font-['Raleway']  ">
+<body class="bg-cream text-ink font-['Poopins']  ">
     <div class="min-h-screen">
         <!-- Header -->
         <header class="sticky top-0 z-30 bg-cream/90 backdrop-blur border-b border-line">
@@ -66,16 +67,19 @@
                     <div class="">
                         <button id="favoritesToggle"
                             class="md:block hidden md:!flex items-center gap-2 rounded-full border border-line bg-white px-6 py-2 text-sm font-light  hover:shadow-soft transition">
-
+                            <i class="fa-solid fa-heart"></i>
                             <span id="favoritesToggleText" class="md:block hidden">View Favorites</span>
                             <span id="favoritesCount" class=" px-2 rounded-full bg-mustard text-xs font-bold"></span>
                         </button>
-                        <div class="flex items-center gap-3">
-                            <i class="fa-solid fa-heart"></i>
+                        <div class="flex items-center gap-3 md:hidden relative">
+                            <span id="favoritesCount"
+                                class="absolute -top-1 left-3 px-1.5 min-w-[1.2rem] h-5 rounded-full bg-mustard text-[10px] font-bold flex items-center justify-center">
+                            </span>
+
+                            <i  class="fa-solid fa-heart text-xl"></i>
+
                             <button id="mobileMenuBtn"
-                                class="md:hidden w-11 h-11 rounded-full border border-line bg-white flex items-center">
-                                <span id="favoritesCount"
-                                    class=" px-2 rounded-full bg-mustard text-xs font-bold"></span>
+                                class="w-11 h-11 rounded-full border border-line bg-white flex items-center justify-center">
                                 <i class="fa-solid fa-bars"></i>
                             </button>
                         </div>
@@ -267,7 +271,7 @@
 
         <div class="relative min-h-full flex items-center justify-center p-4 sm:p-6">
             <div id="modalPanel"
-                class="w-full max-w-4xl bg-cream rounded-[2rem] shadow-card overflow-hidden border border-[#eadfcf] transform scale-95 opacity-0 transition duration-300">
+                class="w-full max-w-4xl bg-cream rounded-[2rem] shadow-card overflow-hidden border border-[#eadfcf] transform scale-95 opacity-0 transition duration-300 max-h-[90vh] overflow-y-auto">
                 <div class="grid lg:grid-cols-2">
                     <div class="relative min-h-[280px] lg:min-h-full">
                         <img id="modalImage" src="" alt="" class="absolute inset-0 w-full h-full object-cover" />

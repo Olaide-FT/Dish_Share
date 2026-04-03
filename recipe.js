@@ -224,7 +224,7 @@ const searchInput = document.getElementById("searchInput");
 const difficultyFilter = document.getElementById("difficultyFilter");
 const favoritesToggle = document.getElementById("favoritesToggle");
 const favoritesToggleText = document.getElementById("favoritesToggleText");
-const favoritesCount = document.getElementById("favoritesCount");
+const favoritesCounts = document.querySelectorAll("#favoritesCount");
 const favoritesSection = document.getElementById("favoritesSection");
 const clearFavoritesView = document.getElementById("clearFavoritesView");
 const emptyState = document.getElementById("emptyState");
@@ -277,9 +277,11 @@ function toggleFavorite(id) {
 }
 
 function updateFavoritesUI() {
-    favoritesCount.textContent = favorites.length;
-    favoritesToggleText.textContent = showFavoritesOnly ? "Showing Favorites" : "View Favorites";
-    favoritesSection.classList.toggle("hidden", !showFavoritesOnly);
+  favoritesCounts.forEach(el => {
+    el.textContent = favorites.length;
+    el.style.display = favorites.length === 0 ? "none" : "flex";
+});
+    
 }
 
 function getFilteredRecipes() {
@@ -288,9 +290,8 @@ function getFilteredRecipes() {
 
     return recipes.filter(recipe => {
         const matchesSearch =
-            recipe.title.toLowerCase().includes(searchTerm) ||
-            recipe.description.toLowerCase().includes(searchTerm) ||
-            recipe.ingredients.some(item => item.toLowerCase().includes(searchTerm));
+            recipe.title.toLowerCase().includes(searchTerm)
+            
 
         const matchesDifficulty = level === "all" || recipe.difficulty === level;
         const matchesFavorites = !showFavoritesOnly || isFavorite(recipe.id);
